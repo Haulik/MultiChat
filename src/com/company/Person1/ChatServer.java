@@ -32,6 +32,7 @@ public class ChatServer {
             ServerSocket serverSocket = new ServerSocket(1337);
             while (true) {
                 Socket socket = serverSocket.accept(); //blokere
+                map.put(socket, new DataOutputStream(socket.getOutputStream()));
                 // socket skal lægges i en tråd
                 System.out.println("Forbundet til Klient");
                 ClientHandler clientHandler = new ClientHandler(socket);
